@@ -1,0 +1,268 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    background-color: #342F2F; /* Updated background color */    
+}
+
+#navbar {
+    background-color: #171EBE;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1000;
+}
+
+#navbar a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+    line-height: 50px; /* Adjust based on your navbar height */
+}
+
+#navbar a:hover, #navbar a:focus {
+    background-color: #0B107D;
+    height: 100%;
+}
+
+#burger-menu {
+    display: none; /* Make sure this stays for larger screens */
+    cursor: pointer;
+    color: black;
+    font-size: 30px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 1001;
+}
+
+#welcome-section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    top: 60px; /* Adjust based on your navbar height */
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+/* Styles for the mobile navbar slide-in */
+.mobile-nav {
+    display: block; /* Make sure it's not set to 'none' */
+    padding-top: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0; /* Controlled by JavaScript */
+    height: 100%;
+    background-color: #171EBE; /* Ensure this is visible */
+    overflow-x: hidden;
+    transition: width 0.5s; /* Smooth transition */
+    z-index: 2; /* Ensure it's above other content */
+}
+
+.mobile-nav a {
+    display: block; /* Stack links vertically */
+    color: white; /* Visible against the #171EBE background */
+    padding: 10px 15px; /* Adequate spacing */
+    text-decoration: none; /* Stylistic choice */
+    font-size: 20px; /* Adequate size */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional: visual separator */
+}
+
+@media (max-width: 800px) {
+    #navbar a {
+        display: none;
+    }
+
+    #burger-menu {
+        display: block;
+    }
+}
+.projects-section > h1  {
+    color: white;
+    text-align: center;
+    margin: 20px auto; /* Explicitly center the heading */
+    margin-bottom: 50px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: fit-content;  /* This makes the width of h1 only as wide as its content */
+}
+
+.projects-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This ensures all child elements are centered */
+    background-color: #334EAF;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px 0; /* Top and bottom padding */
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column layout for desktop */
+    grid-gap: 20px; /* Fixed space between grid items */
+    max-width: 1350px; /* Maximum width for the content */
+    width: 100%; /* Adapt to the size of the projects-section */
+}
+
+.project-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2); /* Starting background color */
+    padding-bottom: 120px;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+.project-tile img {
+    width: 100%; /* Ensure the image fills the container */
+    max-width: 100%; /* Prevents the image from exceeding the tile width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Match the tile border radius */
+}
+
+.project-tile p {
+    text-align: center; /* Center the text under the image */
+    margin-top: 30px; /* Space between the image and the text */
+    width: 100%; /* Ensure text aligns with image width */
+    margin-bottom: -100px;
+    font-size: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern and clean font */
+}
+.project-tile:hover,.project-tile:hover img,
+.project-tile:hover p {
+    transform: scale(1.02); /* Slight zoom effect */
+    color: #dddddd; /* Change color slightly on hover */
+    transition: transform 0.8s ease, background-color 0.8s ease; /* Add background-color transition */
+    
+}
+.project-tile:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 1200px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+        justify-content: center; /* Center the columns in the grid */
+        max-width: 90%; /* Use the full width of the container */
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 20px; /* Ensure there's space between the tiles */
+    }
+
+    .project-tile {
+        max-width: 100%; /* Allows tiles to be larger within their grid cell */
+        padding: 50px; /* Center the project tiles within their cell */
+        margin-bottom: 20px; /* Add some space between rows */
+        height: auto;
+        padding-bottom: 100px;
+    }
+    .project-tile p {
+        margin-bottom: -50px;
+    }
+}
+
+
+/* Adjust grid layout for mobile view */
+@media (max-width: 800px) {
+    .projects-container {
+        grid-template-columns: 1fr; /* Single column for mobile */
+        max-width: 60%; /* Use the full width of the container */
+        padding-left: 0px;
+        padding-right: 35px;
+    }
+
+    .project-tile {
+        max-width: 100%; /* Allow project tiles to fill the container */
+        height: auto;
+        padding: 50px; /* Center the project tiles */
+        padding-bottom: 100px;
+        width: 80%; /* Make the tiles larger but still with some space around */
+        margin-bottom: 20px; /* Add some space between the tiles */
+    }
+   
+}
+
+#qa-projects {
+    background-color: #4E196F; /* New background color for QA projects section */
+}
+
+/* Additional or adjusted styles specific to the QA projects section */
+#qa-projects > h1 {
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    margin-bottom: 50px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: fit-content;
+}
+
+/* Adjust grid layout for all views to handle the 2-1 layout for QA projects */
+#qa-projects .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Default to two columns */
+    grid-gap: 20px;
+    max-width: 1350px;
+    width: 100%;
+}
+
+#qa-projects .project-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2); /* Starting background color */
+    padding-bottom: 120px;
+    padding-top: 100px;
+    padding-left: 120px;
+    padding-right: 120px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+#qa-projects .project-tile img {
+   
+    height: 125px;
+    object-fit: cover; /* Maintain aspect ratio without stretching */
+    border-radius: 5px; /* Match the tile border radius */
+}
+
+/* #project-tile-project-github {
+    width: 30%; 
+    padding-right: 150px;
+    padding-left: 150px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+*/
+
+
+/* Responsive Design Adjustments for mobile view under 800px */
+@media (max-width: 800px) {
+    #qa-projects .projects-container {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
+}
