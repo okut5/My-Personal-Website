@@ -4,11 +4,12 @@ body, html {
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
-    background-color: #342F2F; /* Updated background color */    
+    background-color: #342F2F; /* Updated background color */
+    scroll-behavior: smooth;
 }
 
 #navbar {
-    background-color: #171EBE;
+    background-color: #334EAF;
     position: fixed;
     width: 100%;
     top: 0;
@@ -28,7 +29,7 @@ body, html {
 }
 
 #navbar a:hover, #navbar a:focus {
-    background-color: #0B107D;
+    background-color: #2c44a0;
     height: 100%;
 }
 
@@ -51,6 +52,7 @@ body, html {
 }
 
 .centered {
+    margin-top:-50px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -68,7 +70,7 @@ body, html {
     right: 0;
     width: 0; /* Controlled by JavaScript */
     height: 100%;
-    background-color: #171EBE; /* Ensure this is visible */
+    background-color: #334EAF; /* Ensure this is visible */
     overflow-x: hidden;
     transition: width 0.5s; /* Smooth transition */
     z-index: 2; /* Ensure it's above other content */
@@ -204,65 +206,135 @@ body, html {
    
 }
 
-#qa-projects {
-    background-color: #4E196F; /* New background color for QA projects section */
-}
-
-/* Additional or adjusted styles specific to the QA projects section */
-#qa-projects > h1 {
-    color: white;
-    text-align: center;
-    margin: 20px auto;
-    margin-bottom: 50px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    width: fit-content;
-}
-
-/* Adjust grid layout for all views to handle the 2-1 layout for QA projects */
-#qa-projects .projects-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Default to two columns */
-    grid-gap: 20px;
-    max-width: 1350px;
+#qa-qa-projects {
+    background-color: #4E196F;
     width: 100%;
+    height: 75vh;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#qa-projects .project-tile {
+#qa-qa-projects h1 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.qa-projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.qa-project-tile {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: white;
-    background-color: rgba(255, 255, 255, 0.2); /* Starting background color */
-    padding-bottom: 120px;
-    padding-top: 100px;
-    padding-left: 120px;
-    padding-right: 120px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    transition: transform 0.3s ease;
 }
 
-#qa-projects .project-tile img {
-   
-    height: 125px;
-    object-fit: cover; /* Maintain aspect ratio without stretching */
-    border-radius: 5px; /* Match the tile border radius */
+.qa-project-tile img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-/* #project-tile-project-github {
-    width: 30%; 
-    padding-right: 150px;
-    padding-left: 150px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+.qa-project-tile p {
+    margin-top: 10px;
 }
-*/
 
+.qa-project-tile:hover {
+    transform: scale(1.05);
+}
 
-/* Responsive Design Adjustments for mobile view under 800px */
-@media (max-width: 800px) {
-    #qa-projects .projects-container {
-        grid-template-columns: 1fr; /* Single column for mobile */
+@media (max-width: 1200px) {
+    .qa-projects-container {
+        grid-template-columns: repeat(2, 1fr);
     }
+    #qa-qa-projects{
+        height: 60vh;
+    }
+}
+
+@media (max-width: 800px) {
+    .qa-projects-container {
+        grid-template-columns: 1fr;
+    }
+    #qa-qa-projects{
+        height: 100vh;
+    }
+}
+
+
+.contact-section {
+    background-color: #444141;
+    text-align: center;
+    padding: 50px 0; /* Adjust spacing as needed */
+    height: 60vh; 
+}
+
+.contact-section h1 {
+    color: white;
+    margin-bottom: 150px; /* Space between title and contact links */
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-around; /* Evenly space out the links */
+    align-items: center;
+    max-width: 1200px; /* Adjust based on your design */
+    margin: auto; /* Center the container */
+}
+
+.contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Smooth transition for the transform property */
+}
+
+.contact-link:hover {
+    transform: translateY(-10px); /* Moves the link up by 10 pixels on hover */
+}
+
+.contact-link img {
+    width: 100px; /* Adjust size as needed */
+    margin-bottom: 10px;
+}
+
+.contact-link p {
+    color: white;
+    font-size: 1rem;
+}
+
+footer {
+    background-color: #444141; /* Matches the last section */
+    color: white; /* For contrast */
+    text-align: center; /* Centers the footer content */
+    padding: 20px 0; /* Adds some vertical padding */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Consistent typography */
+    border-top: 1px solid white; /* Adds a white line across the top */
+}
+
+footer address {
+    margin: 0; /* Removes default address margin */
+    padding: 0; /* Optional: Adjusts padding if needed */
+    font-style: normal; /* Removes the italic style commonly applied to address */
+}
+
+footer a {
+    color: #ffffff; /* Sets the link color to white for visibility */
+    text-decoration: none; /* Removes underline from links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adds an underline on hover for better user interaction */
 }

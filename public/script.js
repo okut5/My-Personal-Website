@@ -29,15 +29,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 document.addEventListener('scroll', function() {
-    var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-    // Apply a simple non-linear effect: square the scroll percentage
-    var effect = scrollPercentage * scrollPercentage;
+    const sections = document.querySelectorAll('section');
+    const colors = [
+        'rgb(52, 47, 47)', // #342F2F for Section 1
+        'rgb(51, 78, 175)', // #334EAF for Section 2
+        'rgb(78, 25, 111)', // #4E196F for Section 3
+        'rgb(68, 68, 65)'  // #444141 for Section 4
+    ];
 
-    var colorStart = [52, 47, 47]; // RGB for #342F2F
-    var colorEnd = [51, 78, 175]; // RGB for #334EAF
-    var colorInterpolated = colorStart.map((start, i) => Math.round(start + (colorEnd[i] - start) * effect));
+    let currentSectionIndex = 0;
+    sections.forEach((section, index) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionHeight = section.getBoundingClientRect().height;
+        if (sectionTop < window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
+            // This section is currently in the middle of the viewport
+            currentSectionIndex = index;
+        }
+    });
 
-    document.body.style.backgroundColor = `rgb(${colorInterpolated.join(',')})`;
+    // Ensure the color is applied smoothly without abrupt changes
+    document.body.style.transition = 'background-color 0.8s ease';
+    document.body.style.backgroundColor = colors[currentSectionIndex];
 });
+
 
