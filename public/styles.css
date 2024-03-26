@@ -209,7 +209,7 @@ body, html {
 #qa-qa-projects {
     background-color: #4E196F;
     width: 100%;
-    height: 75vh;
+    min-height: 70vh;
     padding: 40px 0;
     display: flex;
     flex-direction: column;
@@ -259,8 +259,10 @@ body, html {
         grid-template-columns: repeat(2, 1fr);
     }
     #qa-qa-projects{
-        height: 60vh;
+        padding: 20px 0;
+        min-height: 60vh; /* Adjust minimum height for different viewport widths */
     }
+   
 }
 
 @media (max-width: 800px) {
@@ -268,7 +270,9 @@ body, html {
         grid-template-columns: 1fr;
     }
     #qa-qa-projects{
-        height: 100vh;
+        padding: 40px 0;
+        min-height: 70vh; /* Ensure section covers the full viewport height at narrow widths */
+
     }
 }
 
@@ -277,7 +281,7 @@ body, html {
     background-color: #444141;
     text-align: center;
     padding: 50px 0; /* Adjust spacing as needed */
-    height: 60vh; 
+    height: 50vh; 
 }
 
 .contact-section h1 {
